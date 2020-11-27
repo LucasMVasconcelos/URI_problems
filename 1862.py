@@ -41,7 +41,7 @@ class Graph:
 
         if (existing_groups == 1):
             new_groups = 0
-        if (existing_groups == 0):
+        if (existing_groups == 1):
             existing_groups = -1
 
 
@@ -65,4 +65,7 @@ n_people_group_text=[str(i) for i in n_people_group]
 text=" "
 text=text.join(n_people_group_text)
 print(n_groups)
-print(text)
+if len(n_people_group_text)!=1:
+    print(text)
+else:
+    pass
