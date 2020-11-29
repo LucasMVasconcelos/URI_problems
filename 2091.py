@@ -1,31 +1,42 @@
+def heapify(elementos, n, i):
+    raiz = i
+    esq = 2 * i + 1
+    dir = 2 * i + 2
+    if esq < n and elementos[raiz] < elementos[esq]:
+        raiz = esq
+    if dir < n and elementos[raiz] < elementos[dir]:
+        raiz = dir
+    if raiz != i:
+        elementos[i], elementos[raiz] = elementos[raiz], elementos[i]
+        heapify(elementos, n, raiz)
 
-def hf(x, n, i):
-    ml = i
-    l = 2 * i + 1
-    r = 2 * i + 2
-    if l < n and x[ml] < x[l]:
-        ml = l
-    if r < n and x[ml] < x[r]:
-        ml = r
 
-    if ml != i:
-        x[i], x[ml] = x[ml], x[i]
-        hf(x, n, ml)
 
-def HeapSort(x):
-    n = len(x)
-    for i in range(n//2 - 1, -1, -1):
-        hf(x, n, i)
+def heapSort(elementos):
+    n = len(elementos)
 
-    for i in range(n-1, 0, -1):
-        x[i], x[0] = x[0], x[i]
-        hf(x, i, 0)
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(elementos, n, i)
+
+    for i in range(n - 1, 0, -1):
+        elementos[i], elementos[0] = elementos[0], elementos[i]
+        heapify(elementos, i, 0)
+
 
 while True:
     n = int(input())
-    if n!=0:
-        x=[int(i) for i in input().split(" ")]
-        heapSort(x)
-        print(x[n-1])
-    else:
+    if n == 0:
         break
+
+    elementos = input().split()
+    heapSort(elementos)
+
+    aux = 0
+    for i in range(0, len(elementos), 2):
+        aux = i
+        if i+1 >= len(elementos):
+            break
+        if int(elementos[i]) != int(elementos[i+1]):
+            break
+
+    print(elementos[aux])
