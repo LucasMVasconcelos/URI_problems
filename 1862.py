@@ -1,5 +1,3 @@
-
-
 class Grafo:
     def __init__(self, V):
         self.V = V
@@ -59,12 +57,12 @@ for linha in range(n):
     for coluna in range(n):
         if houses_target[linha][coluna]==1 and linha!=coluna:
             g.rel(linha, coluna)
-n_groups,n_people_group=g.countGroups()
-n_people_group.sort(reverse=True)
-n_people_group_text=[str(i) for i in n_people_group]
+n_grupos, n_pessoas_grupos=g.contaGrupos()
+n_pessoas_grupos.sort(reverse=True)
+n_people_group_text=[str(i) for i in n_pessoas_grupos]
 text=" "
 text=text.join(n_people_group_text)
-print(n_groups)
+print(n_grupos)
 if len(n_people_group_text)!=1:
     print(text)
 else:
